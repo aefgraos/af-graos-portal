@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BI de Grãos - A&F Comércio de Grãos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            background: white;
+            color: #f5576c;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-home {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-home:hover {
+            background: white;
+            color: #f5576c;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #f5576c;
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 2px solid #f5576c;
+            padding-bottom: 10px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th {
+            background: #f5576c;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .error {
+            background: #fee;
+            color: #c00;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .export-btn {
+            background: #f5576c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .export-btn:hover {
+            background: #d63447;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            table th, table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📈 BI de Grãos 2026</h1>
+        <div class="header-right">
+            <button class="btn export-btn" onclick="exportarDados()">📥 Exportar Excel</button>
+            <a href="index.html" class="btn btn-home">🏠 Voltar</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="loading" class="loading">Carregando dados...</div>
+        <div id="content" style="display: none;">
+            <!-- Seção de Tradings -->
+            <div class="section">
+                <h2>Preços de Tradings - Soja</h2>
+                <button class="export-btn" onclick="exportarTradings()">📥 Exportar Tradings</button>
+                <div class="chart-container">
+                    <canvas id="tradingsChart"></canvas>
+                </div>
+                <table id="tradingsTable">
+                    <thead>
+                        <tr>
+                            <th>Trading</th>
+                            <th>Disponível</th>
+                            <th>Fev</th>
+                            <th>Mar</th>
+                            <th>Abr</th>
+                            <th>Mai</th>
+                            <th>Jun</th>
+                            <th>Jul</th>
+                            <th>Ago</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Seção de Fretes -->
+            <div class="section">
+                <h2>Fretes por Cidade</h2>
+                <button class="export-btn" onclick="exportarFretes()">📥 Exportar Fretes</button>
+                <div class="chart-container">
+                    <canvas id="fretesChart"></canvas>
+                </div>
+                <table id="fretesTable">
+                    <thead>
+                        <tr>
+                            <th>Estado</th>
+                            <th>Cidade</th>
+                            <th>Disponível</th>
+                            <th>Fev</th>
+                            <th>Mar</th>
+                            <th>Abr</th>
+                            <th>Mai</th>
+                            <th>Jun</th>
+                            <th>Jul</th>
+                            <th>Ago</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let dadosGlobais = {};
+
+        // Carregar dados do JSON
+        async function carregarDados() {
+            try {
+                const response = await fetch('bi-dados.json');
+                dadosGlobais = await response.json();
+                renderizarDados();
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                document.getElementById('loading').innerHTML = '<div class="error">Erro ao carregar dados. Verifique se o arquivo bi-dados.json existe.</div>';
+            }
+        }
+
+        function renderizarDados() {
+            renderizarTradings();
+            renderizarFretes();
+            criarGraficoTradings();
+            criarGraficoFretes();
+        }
+
+        function renderizarTradings() {
+            const tbody = document.querySelector('#tradingsTable tbody');
+            tbody.innerHTML = '';
+
+            dadosGlobais.tradings.forEach(trading => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${trading.nome}</strong></td>
+                    <td>${trading.precos.Disponível || '-'}</td>
+                    <td>${trading.precos.Fev || '-'}</td>
+                    <td>${trading.precos.Mar || '-'}</td>
+                    <td>${trading.precos.Abr || '-'}</td>
+                    <td>${trading.precos.Mai || '-'}</td>
+                    <td>${trading.precos.Jun || '-'}</td>
+                    <td>${trading.precos.Jul || '-'}</td>
+                    <td>${trading.precos.Ago || '-'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function renderizarFretes() {
+            const tbody = document.querySelector('#fretesTable tbody');
+            tbody.innerHTML = '';
+
+            dadosGlobais.cidades.forEach(cidade => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${cidade.estado}</td>
+                    <td><strong>${cidade.cidade}</strong></td>
+                    <td>${cidade.fretes.Disponível || '-'}</td>
+                    <td>${cidade.fretes.Fev || '-'}</td>
+                    <td>${cidade.fretes.Mar || '-'}</td>
+                    <td>${cidade.fretes.Abr || '-'}</td>
+                    <td>${cidade.fretes.Mai || '-'}</td>
+                    <td>${cidade.fretes.Jun || '-'}</td>
+                    <td>${cidade.fretes.Jul || '-'}</td>
+                    <td>${cidade.fretes.Ago || '-'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function criarGraficoTradings() {
+            const meses = ['Disponível', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'];
+            const cores = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#ffa502', '#00d4ff', '#00ff88', '#ff006e'];
+
+            const datasets = dadosGlobais.tradings.map((trading, idx) => ({
+                label: trading.nome,
+                data: meses.map(mes => trading.precos[mes] || 0),
+                borderColor: cores[idx % cores.length],
+                backgroundColor: cores[idx % cores.length] + '20',
+                tension: 0.4,
+                fill: false,
+                borderWidth: 2
+            }));
+
+            const ctx = document.getElementById('tradingsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: meses,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Preço (R$/sc)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function criarGraficoFretes() {
+            const cidades = dadosGlobais.cidades.slice(0, 10).map(c => c.cidade);
+            const meses = ['Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'];
+
+            const datasets = meses.map((mes, idx) => ({
+                label: mes,
+                data: dadosGlobais.cidades.slice(0, 10).map(cidade => cidade.fretes[mes] || 0),
+                backgroundColor: ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#ffa502', '#00d4ff'][idx]
+            }));
+
+            const ctx = document.getElementById('fretesChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: cidades,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: false
+                        },
+                        y: {
+                            stacked: false,
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function exportarTradings() {
+            const ws = XLSX.utils.json_to_sheet(dadosGlobais.tradings.map(t => ({
+                Trading: t.nome,
+                ...t.precos
+            })));
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Tradings');
+            XLSX.writeFile(wb, 'BI_Tradings_2026.xlsx');
+        }
+
+        function exportarFretes() {
+            const ws = XLSX.utils.json_to_sheet(dadosGlobais.cidades.map(c => ({
+                Estado: c.estado,
+                Cidade: c.cidade,
+                ...c.fretes
+            })));
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Fretes');
+            XLSX.writeFile(wb, 'BI_Fretes_2026.xlsx');
+        }
+
+        function exportarDados() {
+            const wb = XLSX.utils.book_new();
+
+            const wsTrad = XLSX.utils.json_to_sheet(dadosGlobais.tradings.map(t => ({
+                Trading: t.nome,
+                ...t.precos
+            })));
+            XLSX.utils.book_append_sheet(wb, wsTrad, 'Tradings');
+
+            const wsFret = XLSX.utils.json_to_sheet(dadosGlobais.cidades.map(c => ({
+                Estado: c.estado,
+                Cidade: c.cidade,
+                ...c.fretes
+            })));
+            XLSX.utils.book_append_sheet(wb, wsFret, 'Fretes');
+
+            XLSX.writeFile(wb, 'BI_Graos_Completo_2026.xlsx');
+        }
+
+        // Carregar dados ao abrir a página
+        carregarDados();
+    </script>
+</body>
+</html>

@@ -1,0 +1,553 @@
+{
+  "tradings": [
+    {
+      "nome": "ADM",
+      "precos": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": null,
+        "Abr": 130.5,
+        "Mai": 131.5,
+        "Jun": null,
+        "Jul": null,
+        "Ago": null
+      }
+    },
+    {
+      "nome": "Amaggi",
+      "precos": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": null,
+        "Abr": null,
+        "Mai": 131.5,
+        "Jun": 134.9,
+        "Jul": 137.7,
+        "Ago": null
+      }
+    },
+    {
+      "nome": "Bunge",
+      "precos": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": null,
+        "Abr": null,
+        "Mai": null,
+        "Jun": null,
+        "Jul": null,
+        "Ago": null
+      }
+    },
+    {
+      "nome": "Cargil",
+      "precos": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": null,
+        "Abr": 130,
+        "Mai": 131,
+        "Jun": 135,
+        "Jul": 137.5,
+        "Ago": null
+      }
+    },
+    {
+      "nome": "Cutrale",
+      "precos": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": null,
+        "Abr": null,
+        "Mai": null,
+        "Jun": null,
+        "Jul": null,
+        "Ago": null
+      }
+    },
+    {
+      "nome": "LDC",
+      "precos": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": null,
+        "Abr": 130,
+        "Mai": 132,
+        "Jun": 135.5,
+        "Jul": null,
+        "Ago": null
+      }
+    },
+    {
+      "nome": "BTG",
+      "precos": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": null,
+        "Abr": null,
+        "Mai": null,
+        "Jun": null,
+        "Jul": null,
+        "Ago": null
+      }
+    },
+    {
+      "nome": "Cofco",
+      "precos": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": null,
+        "Abr": null,
+        "Mai": null,
+        "Jun": null,
+        "Jul": null,
+        "Ago": null
+      }
+    },
+    {
+      "nome": "Soma",
+      "precos": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": null,
+        "Abr": null,
+        "Mai": null,
+        "Jun": null,
+        "Jul": null,
+        "Ago": null
+      }
+    }
+  ],
+  "cidades": [
+    {
+      "estado": "MG",
+      "cidade": "Alfenas",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 180,
+        "Abr": 180,
+        "Mai": 180,
+        "Jun": 170,
+        "Jul": 170,
+        "Ago": 170
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Alterosa",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 210,
+        "Abr": 210,
+        "Mai": 210,
+        "Jun": 200,
+        "Jul": 200,
+        "Ago": 200
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Bambui",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 250,
+        "Abr": 250,
+        "Mai": 250,
+        "Jun": 240,
+        "Jul": 240,
+        "Ago": 240
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Boa Esperança",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 190,
+        "Abr": 190,
+        "Mai": 190,
+        "Jun": 180,
+        "Jul": 180,
+        "Ago": 180
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Campos Gerais",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 180,
+        "Abr": 180,
+        "Mai": 180,
+        "Jun": 170,
+        "Jul": 170,
+        "Ago": 170
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Carandai",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 200,
+        "Abr": 200,
+        "Mai": 200,
+        "Jun": 200,
+        "Jul": 180,
+        "Ago": 180
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Carmo do Rio Claro",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 200,
+        "Abr": 200,
+        "Mai": 200,
+        "Jun": 200,
+        "Jul": 190,
+        "Ago": 190
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Carrancas",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 190,
+        "Abr": 190,
+        "Mai": 190,
+        "Jun": 190,
+        "Jul": 170,
+        "Ago": 170
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Novo Horizonte",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 210,
+        "Abr": 210,
+        "Mai": 210,
+        "Jun": 200,
+        "Jul": 200,
+        "Ago": 200
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Conceição do Rio Verde",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 170,
+        "Abr": 170,
+        "Mai": 170,
+        "Jun": 160,
+        "Jul": 160,
+        "Ago": 160
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Cordislandia",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 180,
+        "Abr": 180,
+        "Mai": 180,
+        "Jun": 180,
+        "Jul": 170,
+        "Ago": 170
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Cristais",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 220,
+        "Abr": 220,
+        "Mai": 200,
+        "Jun": 200,
+        "Jul": 145,
+        "Ago": 140
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Cruzilia",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 185,
+        "Abr": 185,
+        "Mai": 185,
+        "Jun": 185,
+        "Jul": 165,
+        "Ago": 165
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Ingai",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 200,
+        "Abr": 200,
+        "Mai": 200,
+        "Jun": 200,
+        "Jul": 170,
+        "Ago": 170
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Itacy/Ilicinea",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 220,
+        "Abr": 220,
+        "Mai": 220,
+        "Jun": 210,
+        "Jul": 210,
+        "Ago": 210
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Itutinga",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 200,
+        "Abr": 200,
+        "Mai": 200,
+        "Jun": 200,
+        "Jul": 200,
+        "Ago": 200
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Lavras",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 200,
+        "Abr": 200,
+        "Mai": 200,
+        "Jun": 200,
+        "Jul": 200,
+        "Ago": 200
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Luminarias",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 200,
+        "Abr": 200,
+        "Mai": 200,
+        "Jun": 200,
+        "Jul": 165,
+        "Ago": 160
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Machado",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 170,
+        "Abr": 170,
+        "Mai": 170,
+        "Jun": 170,
+        "Jul": 140,
+        "Ago": 140
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Madre de Deus",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 210,
+        "Abr": 210,
+        "Mai": 200,
+        "Jun": 200,
+        "Jul": 190,
+        "Ago": 190
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Minduri",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 200,
+        "Abr": 200,
+        "Mai": 200,
+        "Jun": 200,
+        "Jul": 200,
+        "Ago": 200
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Nazareno",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 200,
+        "Abr": 200,
+        "Mai": 180,
+        "Jun": 180,
+        "Jul": 165,
+        "Ago": 165
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Paraguaçu",
+      "fretes": {
+        "Disponível": 175,
+        "Fev": null,
+        "Mar": 180,
+        "Abr": 180,
+        "Mai": 180,
+        "Jun": 170,
+        "Jul": 170,
+        "Ago": 170
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "P. Alegre",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 140,
+        "Abr": 140,
+        "Mai": 130,
+        "Jun": 130,
+        "Jul": 150,
+        "Ago": 150
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "São Bento Abade",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 170,
+        "Abr": 170,
+        "Mai": 165,
+        "Jun": 165,
+        "Jul": 150,
+        "Ago": 145
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "São Gonçalo do Sapucai",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 160,
+        "Abr": 160,
+        "Mai": 160,
+        "Jun": 150,
+        "Jul": 150,
+        "Ago": 150
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "São Joao del Rey",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 190,
+        "Abr": 190,
+        "Mai": 190,
+        "Jun": 190,
+        "Jul": 190,
+        "Ago": 185
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Pouso Alegre/S S Bela Vista",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 160,
+        "Abr": 160,
+        "Mai": 160,
+        "Jun": 160,
+        "Jul": 150,
+        "Ago": 150
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Três corações",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 160,
+        "Abr": 160,
+        "Mai": 150,
+        "Jun": 150,
+        "Jul": 150,
+        "Ago": 150
+      }
+    },
+    {
+      "estado": "MG",
+      "cidade": "Santa Rita de Caldas",
+      "fretes": {
+        "Disponível": null,
+        "Fev": null,
+        "Mar": 180,
+        "Abr": 180,
+        "Mai": 180,
+        "Jun": 170,
+        "Jul": 170,
+        "Ago": 170
+      }
+    }
+  ],
+  "meses": [
+    "Disponível",
+    "Fev",
+    "Mar",
+    "Abr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Ago"
+  ]
+}
